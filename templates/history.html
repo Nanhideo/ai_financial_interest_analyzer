@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculation History - AI Financial Analyzer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Analysis <span class="accent">History</span></h1>
+            <p>Review your past financial calculations and AI insights.</p>
+            <a href="/" class="back-link">← Back to Calculator</a>
+        </header>
+
+        <main>
+            <section class="history-list">
+                {% if records %}
+                    {% for record in records %}
+                    <div class="card history-card">
+                        <div class="history-header">
+                            <h3>{{ record.name }}</h3>
+                            <span class="history-date">Invested: ${{ record.invested_amount }}</span>
+                        </div>
+                        <div class="history-body">
+                            <div class="history-stats">
+                                <div><strong>Total Value:</strong> ${{ record.total }}</div>
+                                <div><strong>Interest Earned:</strong> ${{ record.interest }}</div>
+                                <div><strong>Rate:</strong> {{ record.interest_rate }}%</div>
+                            </div>
+                            <div class="history-ai">
+                                <strong>AI Insight:</strong>
+                                <p>{{ record.ai_advice }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                {% else %}
+                    <div class="card empty-card">
+                        <p>No history found yet. Start by making your first calculation!</p>
+                    </div>
+                {% endif %}
+            </section>
+        </main>
+    </div>
+
+    <style>
+        .back-link {
+            display: inline-block;
+            margin-top: 1rem;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        .back-link:hover {
+            color: var(--accent);
+        }
+        .history-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        .history-card {
+            padding: 1.5rem;
+        }
+        .history-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--glass-border);
+            padding-bottom: 0.8rem;
+            margin-bottom: 1rem;
+        }
+        .history-date {
+            color: var(--accent);
+            font-weight: 700;
+        }
+        .history-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+        .history-ai {
+            background: rgba(15, 23, 42, 0.4);
+            padding: 1rem;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+        .history-ai strong {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-main);
+        }
+        .empty-card {
+            text-align: center;
+            padding: 4rem;
+            color: var(--text-muted);
+        }
+    </style>
+</body>
+</html>
