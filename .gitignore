@@ -1,0 +1,62 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+venv/
+.env
+
+# IDE
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# Generated reports/files
+generated/
+reports/
+downloads/
+exports/
+temp/
+tmp/
+
+# AI generated files
+generated_files/
+ai_outputs/
+feature_files/
+manual_test_cases/
+
+# Database
+*.db
+*.sqlite3
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Robot Framework
+log.html
+report.html
+output.xml
+
+# Selenium screenshots
+screenshots/
+
+# Excel / CSV generated files
+*.xlsx
+*.csv
+
+# ZIP files
+*.zip
+
+# Node modules
+node_modules/
+
+# Build folders
+dist/
+build/
+
+# Test outputs
+allure-results/
+allure-report/
